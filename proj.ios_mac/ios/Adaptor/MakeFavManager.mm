@@ -44,19 +44,33 @@ static MakeFavManager *instance=nil;
         }else{
             favNames_=[[NSMutableArray arrayWithCapacity:10] retain];
         }
+        curFavNames_ = [[[NSMutableArray alloc]init]retain];
     }
     return self;
 }
 
+-(void)setFavType:(NSString *)favType
+{
+    favType_ = favType;
+    [curFavNames_ removeAllObjects];
+    for (MakeFavItem* item in favNames_) {
+        if ([item.favType isEqualToString:favType]) {
+            [curFavNames_ addObject:item];
+        }
+    }
+}
 -(void)addFavWithName:(NSString *)name Image:(UIImage *)image
 {
-    MakeFavItem *item=[[MakeFavItem alloc] initWithFavName:name];
+    NSString* dateStr = [[NSDate date]description];
+    MakeFavItem *item=[[MakeFavItem alloc] initWithFavName:dateStr type:name];
     [favNames_ addObject:item];
+    [curFavNames_ addObject:item];
     [item release];
+    favType_ = name;
     
     //保存做好的图片
     NSData *imgData = UIImagePNGRepresentation(image);
-    NSString  *path = [NSString stringWithFormat:@"%@/%@.png", DOCUMENTS_FOLDER,name];
+    NSString  *path = [NSString stringWithFormat:@"%@/%@.png", DOCUMENTS_FOLDER,dateStr];
     [imgData writeToFile:path atomically:YES];
     
     
@@ -73,7 +87,7 @@ static MakeFavManager *instance=nil;
     UIGraphicsEndImageContext();
 //
     NSData *imgData2 = UIImagePNGRepresentation(smallImage);
-    NSString *name2 = [NSString stringWithFormat:@"%@Icon",name];
+    NSString *name2 = [NSString stringWithFormat:@"%@Icon",dateStr];
     NSString  *path2 = [NSString stringWithFormat:@"%@/%@.png", DOCUMENTS_FOLDER,name2];
     [imgData2 writeToFile:path2 atomically:YES];
     AlumnAdapter::saveFavFinished(true);
@@ -93,6 +107,9 @@ static MakeFavManager *instance=nil;
 
 -(int)getFavCount
 {
+    if (favType_) {
+        
+    }
     return [favNames_ count];
 }
 
@@ -143,9 +160,66 @@ static MakeFavManager *instance=nil;
     return [NSString stringWithFormat:@"%@/%@.dat", DOCUMENTS_FOLDER,[self getFavNameByID:tag]];
 }
 
+/**根据ID删除 */
+-(void)deleteFavByID:(int)tag name:(NSString*)name
+{
+    if (![name isEqualToString:favType_]){
+        [self setFavType:name];
+    }
+    [favNames_ removeObject:(MakeFavItem *)[curFavNames_ objectAtIndex:tag]];
+    [curFavNames_ removeObjectAtIndex:tag];
+    
+}
+/**获取收藏项目组的个数*/
+-(int)getFavCount:(NSString*)name
+{
+    if (![name isEqualToString:favType_]){
+        [self setFavType:name];
+    }
+    return [curFavNames_ count];
+}
+
+/**获取收藏的名称*/
+-(NSString *)getFavNameByID:(int)tag name:(NSString*)name
+{
+    if (![name isEqualToString:favType_]){
+        [self setFavType:name];
+    }
+    return ((MakeFavItem *)[curFavNames_ objectAtIndex:tag]).favName;
+    
+}
+/**获取icon*/
+-(UIImage *)getFavIconByID:(int)tag name:(NSString*)name
+{
+    UIImage *img=[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@Icon.png", DOCUMENTS_FOLDER,[self getFavNameByID:tag name:name]]];
+    return img;
+}
+/**获取收藏做好东西的图片 */
+-(UIImage *)getFavImageByID:(int)tag name:(NSString*)name
+{
+    UIImage *img=[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.png", DOCUMENTS_FOLDER,[self getFavNameByID:tag]]];
+    return img;
+    
+}
+/*获取收藏的东西数据路径*/
+-(NSString *)getFavDataPathByID:(int)tag name:(NSString*)name
+{
+    return [NSString stringWithFormat:@"%@/%@.dat", DOCUMENTS_FOLDER,[self getFavNameByID:tag name:name]];
+    
+}
+
+-(NSString*)getFavIconPathByID:(int)tag name:(NSString*)name
+{
+    return [NSString stringWithFormat:@"%@/%@Icon.png", DOCUMENTS_FOLDER,[self getFavNameByID:tag name:name]];
+}
+-(NSString*)getFavImagePathByID:(int)tag name:(NSString*)name
+{
+    return [NSString stringWithFormat:@"%@/%@.png", DOCUMENTS_FOLDER,[self getFavNameByID:tag name:name]];
+}
 -(void)dealloc
 {    
     [favNames_ release],favNames_=nil;
+    [curFavNames_ release]; curFavNames_ = nil;
     [super dealloc];
 }
 

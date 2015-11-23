@@ -73,6 +73,12 @@
 		7C4F95F81C00163100B7ECC9 /* LockItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F95E81C00163100B7ECC9 /* LockItem.cpp */; settings = {ASSET_TAGS = (); }; };
 		7C4F95F91C00163100B7ECC9 /* MakeEatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F95EA1C00163100B7ECC9 /* MakeEatLayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		7C4F95FC1C0019D400B7ECC9 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F95FA1C0019D400B7ECC9 /* LoadingScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		7C7CA3FD1C02C27400ACA99B /* config in Resources */ = {isa = PBXBuildFile; fileRef = 7C7CA3FB1C02C27400ACA99B /* config */; settings = {ASSET_TAGS = (); }; };
+		7C7CA3FE1C02C27400ACA99B /* content in Resources */ = {isa = PBXBuildFile; fileRef = 7C7CA3FC1C02C27400ACA99B /* content */; settings = {ASSET_TAGS = (); }; };
+		7C7CA4021C02C31300ACA99B /* particle in Resources */ = {isa = PBXBuildFile; fileRef = 7C7CA4011C02C31300ACA99B /* particle */; settings = {ASSET_TAGS = (); }; };
+		7C7CA4071C02FA3F00ACA99B /* FavScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7CA4051C02FA3F00ACA99B /* FavScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		7C7CA4091C03022400ACA99B /* dialog in Resources */ = {isa = PBXBuildFile; fileRef = 7C7CA4081C03022400ACA99B /* dialog */; settings = {ASSET_TAGS = (); }; };
+		7C7CA40B1C03026E00ACA99B /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 7C7CA40A1C03026E00ACA99B /* fonts */; settings = {ASSET_TAGS = (); }; };
 		7CFB0D871C004289003E0D2F /* AlumnAdapterIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB0D721C004289003E0D2F /* AlumnAdapterIos.mm */; settings = {ASSET_TAGS = (); }; };
 		7CFB0D881C004289003E0D2F /* AlumnImpIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB0D741C004289003E0D2F /* AlumnImpIos.mm */; settings = {ASSET_TAGS = (); }; };
 		7CFB0D891C004289003E0D2F /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB0D761C004289003E0D2F /* FileHelper.m */; settings = {ASSET_TAGS = (); }; };
@@ -399,6 +405,13 @@
 		7C4F95EB1C00163100B7ECC9 /* MakeEatLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeEatLayer.h; sourceTree = "<group>"; };
 		7C4F95FA1C0019D400B7ECC9 /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingScene.cpp; sourceTree = "<group>"; };
 		7C4F95FB1C0019D400B7ECC9 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
+		7C7CA3FB1C02C27400ACA99B /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; path = config; sourceTree = "<group>"; };
+		7C7CA3FC1C02C27400ACA99B /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = content; sourceTree = "<group>"; };
+		7C7CA4011C02C31300ACA99B /* particle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle; sourceTree = "<group>"; };
+		7C7CA4051C02FA3F00ACA99B /* FavScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FavScene.cpp; sourceTree = "<group>"; };
+		7C7CA4061C02FA3F00ACA99B /* FavScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavScene.h; sourceTree = "<group>"; };
+		7C7CA4081C03022400ACA99B /* dialog */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dialog; sourceTree = "<group>"; };
+		7C7CA40A1C03026E00ACA99B /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		7CFB0D721C004289003E0D2F /* AlumnAdapterIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlumnAdapterIos.mm; sourceTree = "<group>"; };
 		7CFB0D731C004289003E0D2F /* AlumnImpIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlumnImpIos.h; sourceTree = "<group>"; };
 		7CFB0D741C004289003E0D2F /* AlumnImpIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlumnImpIos.mm; sourceTree = "<group>"; };
@@ -707,6 +720,11 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7C7CA40A1C03026E00ACA99B /* fonts */,
+				7C7CA4081C03022400ACA99B /* dialog */,
+				7C7CA4011C02C31300ACA99B /* particle */,
+				7C7CA3FB1C02C27400ACA99B /* config */,
+				7C7CA3FC1C02C27400ACA99B /* content */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -843,6 +861,8 @@
 				7C4F95D61C00163100B7ECC9 /* ShopLayer.h */,
 				7C4F95D71C00163100B7ECC9 /* ShopScene.cpp */,
 				7C4F95D81C00163100B7ECC9 /* ShopScene.h */,
+				7C7CA4051C02FA3F00ACA99B /* FavScene.cpp */,
+				7C7CA4061C02FA3F00ACA99B /* FavScene.h */,
 				7C4F95FA1C0019D400B7ECC9 /* LoadingScene.cpp */,
 				7C4F95FB1C0019D400B7ECC9 /* LoadingScene.h */,
 			);
@@ -1125,17 +1145,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C7CA3FD1C02C27400ACA99B /* config in Resources */,
 				A20FFA261B3D0CD500A08F52 /* AppIcon29x29@2x.png in Resources */,
 				A20FFA271B3D0CD500A08F52 /* AppIcon40x40.png in Resources */,
 				A20FFA241B3D0CD500A08F52 /* Default@2x.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				A20FFA2F1B3D0CD500A08F52 /* AppIcon76x76.png in Resources */,
+				7C7CA4021C02C31300ACA99B /* particle in Resources */,
 				A20FFA2E1B3D0CD500A08F52 /* AppIcon72x72@2x.png in Resources */,
 				A20FFA221B3D0CD500A08F52 /* Default-568h@2x.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				7C7CA3FE1C02C27400ACA99B /* content in Resources */,
+				7C7CA4091C03022400ACA99B /* dialog in Resources */,
 				A20FFA2A1B3D0CD500A08F52 /* AppIcon57x57@2x.png in Resources */,
 				A20FFA321B3D0CE900A08F52 /* Info.plist in Resources */,
 				A20FFA291B3D0CD500A08F52 /* AppIcon57x57.png in Resources */,
+				7C7CA40B1C03026E00ACA99B /* fonts in Resources */,
 				A20FFA281B3D0CD500A08F52 /* AppIcon40x40@2x.png in Resources */,
 				A20FFA251B3D0CD500A08F52 /* AppIcon29x29.png in Resources */,
 				A20FFA2D1B3D0CD500A08F52 /* AppIcon72x72.png in Resources */,
@@ -1213,6 +1238,7 @@
 				7C4F95B41C0015A000B7ECC9 /* CocoStudioHelper.cpp in Sources */,
 				7C4F95CA1C0015A000B7ECC9 /* LocalizationHelp.cpp in Sources */,
 				7CFB0D8F1C004289003E0D2F /* ShopAdapter.mm in Sources */,
+				7C7CA4071C02FA3F00ACA99B /* FavScene.cpp in Sources */,
 				7C4F95BB1C0015A000B7ECC9 /* MyRenderTexture.cpp in Sources */,
 				7C4F95C01C0015A000B7ECC9 /* DressUpData.cpp in Sources */,
 				7C4F95C21C0015A000B7ECC9 /* FillMaterialModel.cpp in Sources */,

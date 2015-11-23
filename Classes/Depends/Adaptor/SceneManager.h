@@ -12,7 +12,7 @@
 #include "ShareScene.h"
 #include "ShopScene.h"
 #include "LoadingScene.h"
-
+#include "FavScene.h"
 
 USING_NS_CC;
 

@@ -30,17 +30,17 @@ bool ShareScene::init()
     _initData();
     
     //    bg
-    int bgIndex = GameDataManager::getInstance()->m_nBgIndex;
-    ostringstream ostr;
-    if (bgIndex<0) {
-        ostr<<"content/make/dec/bg.jpg";
-    }else{
-        
-        ostr<<"content/category/"<<"background/"<<"background"<<bgIndex<<".png";
-    }
-    m_pBg = Sprite::create(ostr.str());
-    m_pBg->setPosition(visibleSize*0.5);
-    this->addChildToBGLayer(m_pBg);
+//    int bgIndex = GameDataManager::getInstance()->m_nBgIndex;
+//    ostringstream ostr;
+//    if (bgIndex<0) {
+//        ostr<<"content/make/dec/bg.jpg";
+//    }else{
+//        
+//        ostr<<"content/category/"<<"background/"<<"background"<<bgIndex<<".png";
+//    }
+//    m_pBg = Sprite::create(ostr.str());
+//    m_pBg->setPosition(visibleSize*0.5);
+//    this->addChildToBGLayer(m_pBg);
     
     m_pEatLayer = EatLayer::create();
     this->addChildToUILayer(m_pEatLayer);
@@ -88,8 +88,8 @@ void ShareScene::onButtonCallback(Button* btn)
         btn->setEnabled(false);
         RenderTexture* rt = getResultRender();
         Image* pImage = rt->newImage();
-        AlumnAdapter::saveToFav(pImage,[=](){
-            
+        AlumnAdapter::saveToFav("tree",pImage,[=](){
+            btn->setEnabled(true);
         });
         pImage->autorelease();
         
@@ -113,7 +113,7 @@ void ShareScene::onButtonCallback(Button* btn)
         pImage->saveToFile(FileUtility::getStoragePath()+"shotscreen.png", false);
         pImage->autorelease();
         STSystemFunction st;
-        st.sendEmailAndFilePic("Mac N' Cheese",  "<p>Check out the Mac N' Cheese I just made!  Download the app from the link below and see if you can make a better one!</p>  <p><a href=‘http://itunes.apple.com/app/id563797954’>http://itunes.apple.com/app/id563797954</a></p>", FileUtility::getStoragePath()+"shotscreen.png");
+        st.sendEmailAndFilePic("Christmas",  "<p>Check out the Christmas I just made!  Download the app from the link below and see if you can make a better one!</p>  <p><a href=‘http://itunes.apple.com/app/id563797954’>http://itunes.apple.com/app/id563797954</a></p>", FileUtility::getStoragePath()+"shotscreen.png");
     }else if (eUIButtonTagEatAgain==tag){
         btn->setVisible(false);
         btn->setEnabled(true);
@@ -142,10 +142,11 @@ void ShareScene::onButtonCallback(Button* btn)
 //                    SceneManager::replaceTheScene<HomeScene>();
 //                };
 //            }else{
-                SceneManager::popToRootScene();
-                SceneManager::replaceTheScene<HomeScene>();
+//                SceneManager::popToRootScene();
+//                SceneManager::replaceTheScene<HomeScene>();
 //            }
             
+            SceneManager::pushTheScene<FavScene>();
         };
         dialog->onNegativeClick = [=](void*){
             btn->setEnabled(true);
@@ -167,7 +168,7 @@ RenderTexture* ShareScene::getResultRender()
     RenderTexture* render = RenderTexture::create(visibleSize.width, visibleSize.height);
     
     render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
-    m_pBGLayer->visit();
+//    m_pBGLayer->visit();
     m_pContentLayer->visit();
     render->end();
     

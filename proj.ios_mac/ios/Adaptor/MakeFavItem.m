@@ -1,10 +1,3 @@
-//
-//  MakeFavItem.m
-//  MAKE05
-//
-//  Created by jordenwu on 11/2/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "MakeFavItem.h"
 #define kFavName @"FavName"
@@ -20,12 +13,13 @@
     
     return self;
 }
--(id)initWithFavName:(NSString*)name
+-(id)initWithFavName:(NSString*)name type:(NSString*)type
 {
     self = [super init];
     if (self) {
         // Initialization code here.
         self.favName=name;
+        self.favType=type;
     }
     
     return self;
@@ -39,7 +33,7 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     
-    return [self initWithFavName:(NSString*)[decoder decodeObjectForKey:kFavName]];
+    return [self initWithFavName:(NSString*)[decoder decodeObjectForKey:kFavName]type:@""];
 }
 -(void)dealloc
 {

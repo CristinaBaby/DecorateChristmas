@@ -31,9 +31,9 @@ bool DecorateScene::init()
     _initData();
     
     //    bg
-    m_pBg = Sprite::create(localPath("dec/bg.jpg"));
-    m_pBg->setPosition(visibleSize*0.5);
-    this->addChildToBGLayer(m_pBg);
+//    m_pBg = Sprite::create(localPath("dec/bg.jpg"));
+//    m_pBg->setPosition(visibleSize*0.5);
+//    this->addChildToBGLayer(m_pBg);
     
     
     m_pTypeScrollView = DecTypeScrollView::createWithSize(Size(160,580));
@@ -57,7 +57,7 @@ bool DecorateScene::init()
 void DecorateScene::_initData()
 {
     m_nPackage = GameDataManager::getInstance()->m_nPackage;
-    setExPath("content/make/");
+    setExPath("content/");
     
 }
 
@@ -65,12 +65,13 @@ void DecorateScene::_initDefaultDecorate()
 {
     DecorateManager* pDecManager = DecorateManager::getInstance();
     
-    pDecManager->initWithParent(this->m_pContentLayer, eDecorateTypeBoth);
-    pDecManager->setDrinkMaskSprite(Sprite::create("content/category/drink/cup2.png"));
-    pDecManager->addDecoration(Sprite::create(localPath("dec/bowl.png")), eDecorationLayerFoodBack,"bowl",Vec2(visibleSize.width*0.5, visibleSize.height*0.5));
-    pDecManager->addDecoration(Sprite::create(localPath("dec/macaroni.png")), eDecorationLayerFood,"",visibleSize*0.5);
-    
-    m_pTypeScrollView->loadType(ConfigManager::getInstance()->getDecorateType("common"));
+    if (m_nPackage==0) {
+        pDecManager->initWithParent(this->m_pContentLayer, eDecorateTypeFood);
+        pDecManager->addDecoration(Sprite::create(localPath("dec/bowl.png")), eDecorationLayerFoodBack,"bowl",Vec2(visibleSize.width*0.5, visibleSize.height*0.5));
+        pDecManager->addDecoration(Sprite::create(localPath("dec/macaroni.png")), eDecorationLayerFood,"",visibleSize*0.5);
+        
+        m_pTypeScrollView->loadType(ConfigManager::getInstance()->getDecorateType("tree"));
+    }
     
 }
 

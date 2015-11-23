@@ -12,11 +12,15 @@
 @interface MakeFavManager : NSObject
 {
     NSMutableArray *favNames_;
+    NSMutableArray *curFavNames_;
+    NSString* favType_;
 }
 /**收藏的所有名称组 */
 @property(nonatomic,retain)NSMutableArray *favNames;
 /**共享*/
 +(MakeFavManager *)sharedFavmanager;
+-(void)setFavType:(NSString*)favType;
+
 /**根据ID删除 */
 -(void)deleteFavByID:(int)tag;
 /**获取收藏项目组的个数*/
@@ -29,6 +33,22 @@
 -(UIImage *)getFavImageByID:(int)tag;
 /*获取收藏的东西数据路径*/
 -(NSString *)getFavDataPathByID:(int)tag;
+
+/**根据ID删除 */
+-(void)deleteFavByID:(int)tag name:(NSString*)name;
+/**获取收藏项目组的个数*/
+-(int)getFavCount:(NSString*)name;;
+/**获取收藏的名称*/
+-(NSString *)getFavNameByID:(int)tag name:(NSString*)name;
+/**获取icon*/
+-(UIImage *)getFavIconByID:(int)tag name:(NSString*)name;
+/**获取收藏做好东西的图片 */
+-(UIImage *)getFavImageByID:(int)tag name:(NSString*)name;
+/*获取收藏的东西数据路径*/
+-(NSString *)getFavDataPathByID:(int)tag name:(NSString*)name;
+-(NSString*)getFavImagePathByID:(int)tag name:(NSString*)name;
+-(NSString *)getFavIconPathByID:(int)tag name:(NSString*)name;
+
 /*保存数据*/
 -(void)saveFavData;
 /**添加收藏*/

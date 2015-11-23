@@ -21,14 +21,14 @@ public:
     static void saveToFav(Image* apCCImg,const std::function<void()>& callback);
     static void saveToFav(const char*name,Image* apCCImg,const std::function<void()>& callback);
 //    static void saveToFav(const char*name,CCRenderTexture* apRT);
-    static const char* getFavImagePathByID(int tag);
-    static Image* getFavIconByID(int tag);
-    static Image* getFavImageByID(int tag);
-    static const char* getFavDataPathByID(int tag);
-    static const char* getFavNameByID(int tag);
-    static const char* getFavIconNameByID(int tag);
+    static const char* getFavImagePathByID(int tag,std::string favName = "");
+    static Image* getFavIconByID(int tag,std::string favName = "");
+    static Image* getFavImageByID(int tag,std::string favName = "");
+    static const char* getFavDataPathByID(int tag,std::string favName = "");
+    static const char* getFavNameByID(int tag,std::string favName = "");
+    static const char* getFavIconNameByID(int tag,std::string favName = "");
 
-    static int getFavCount();
+    static int getFavCount(std::string favName = "");
     
 //    static std::function<void()> saveAlumnCallback;
 //    static std::function<void()> saveFavCallback;

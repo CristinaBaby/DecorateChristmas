@@ -51,7 +51,7 @@ void AlumnAdapter::saveToFav(cocos2d::Image *apCCImg,const std::function<void()>
 {
     
     saveFavCallback = callback;
-    [[MakeFavManager sharedFavmanager] addFavWithName:[[NSDate date]description] Image:ImageUtil::CCImageToUIImage(apCCImg)];
+    [[MakeFavManager sharedFavmanager] addFavWithName:nil Image:ImageUtil::CCImageToUIImage(apCCImg)];
 }
 
 void AlumnAdapter::saveToFav(const char *name, cocos2d::Image *apCCImg,const std::function<void()>& callback)
@@ -61,40 +61,65 @@ void AlumnAdapter::saveToFav(const char *name, cocos2d::Image *apCCImg,const std
     [[MakeFavManager sharedFavmanager] addFavWithName:str Image:ImageUtil::CCImageToUIImage(apCCImg)];
 }
 
-const char* AlumnAdapter::getFavImagePathByID(int tag)
+const char* AlumnAdapter::getFavImagePathByID(int tag,std::string favName)
 {
-    NSString* str = [[MakeFavManager sharedFavmanager]getFavImagePathByID:tag];
+    if (std::strcmp(favName.c_str(), "") == 0) {
+        NSString* str = [[MakeFavManager sharedFavmanager]getFavImagePathByID:tag];
+        return [str UTF8String];
+    }
+    NSString* str = [[MakeFavManager sharedFavmanager]getFavImagePathByID:tag name:[NSString stringWithUTF8String:favName.c_str()]];
     return [str UTF8String];
     
 }
-Image* AlumnAdapter::getFavIconByID(int tag)
+Image* AlumnAdapter::getFavIconByID(int tag,std::string favName)
 {
-    NSString* path =[[MakeFavManager sharedFavmanager]getFavIconPathByID:tag];
+    if (std::strcmp(favName.c_str(), "") == 0) {
+        NSString* path =[[MakeFavManager sharedFavmanager]getFavIconPathByID:tag];
+        Image* img = new Image();
+        img->initWithImageFile([path UTF8String]);
+        img->autorelease();
+        return img;
+    }
+    NSString* path =[[MakeFavManager sharedFavmanager]getFavIconPathByID:tag name:[NSString stringWithUTF8String:favName.c_str()]];
     Image* img = new Image();
     img->initWithImageFile([path UTF8String]);
     img->autorelease();
     return img;
 }
 
-Image* AlumnAdapter::getFavImageByID(int tag)
+Image* AlumnAdapter::getFavImageByID(int tag,std::string favName)
 {
+    if (std::strcmp(favName.c_str(), "") == 0) {
+        NSString* path =[[MakeFavManager sharedFavmanager]getFavImagePathByID:tag];
+        Image* img = new Image();
+        img->initWithImageFile([path UTF8String]);
+        img->autorelease();
+        return img;
+    }
     
-    NSString* path =[[MakeFavManager sharedFavmanager]getFavImagePathByID:tag];
+    NSString* path =[[MakeFavManager sharedFavmanager]getFavImagePathByID:tag name:[NSString stringWithUTF8String:favName.c_str()]];
     Image* img = new Image();
     img->initWithImageFile([path UTF8String]);
     img->autorelease();
     return img;
 }
 
-const char* AlumnAdapter::getFavIconNameByID(int tag)
+const char* AlumnAdapter::getFavIconNameByID(int tag,std::string favName)
 {
-    NSString* str = [[MakeFavManager sharedFavmanager]getFavIconPathByID:tag];
+    if (std::strcmp(favName.c_str(), "") == 0) {
+        NSString* str = [[MakeFavManager sharedFavmanager]getFavIconPathByID:tag];
+        return [str UTF8String];
+    }
+    NSString* str = [[MakeFavManager sharedFavmanager]getFavIconPathByID:tag name:[NSString stringWithUTF8String:favName.c_str()]];
     return [str UTF8String];
     
 }
 
 
-int AlumnAdapter::getFavCount()
+int AlumnAdapter::getFavCount(std::string favName)
 {
-    return [[MakeFavManager sharedFavmanager]getFavCount];
+    if (std::strcmp(favName.c_str(), "") == 0) {
+        return [[MakeFavManager sharedFavmanager]getFavCount];
+    }
+    return [[MakeFavManager sharedFavmanager]getFavCount:[NSString stringWithUTF8String:favName.c_str()]];
 }

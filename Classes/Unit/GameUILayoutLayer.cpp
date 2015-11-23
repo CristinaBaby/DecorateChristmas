@@ -215,10 +215,10 @@ void GameUILayoutLayer::showDecorateUILayout(bool animate)
 
 void GameUILayoutLayer::showShareUILayout(bool animate)
 {
-//    if (!m_pFav) {
-//        m_pFav = _createButton("content/common/icon/btn_fav.png");
-//        this->addChild(m_pFav);
-//    }
+    if (!m_pFav) {
+        m_pFav = _createButton("content/common/btn_fav.png");
+        this->addChild(m_pFav);
+    }
 //    if (!m_pEmail) {
 //        m_pEmail = _createButton("content/common/icon/public_btn_email.png");
 //        this->addChild(m_pEmail);
@@ -227,11 +227,11 @@ void GameUILayoutLayer::showShareUILayout(bool animate)
         m_pHome = _createButton("content/common/btn_home.png");
         this->addChild(m_pHome);
     }
-//    CMVisibleRect::setPositionAdapted(m_pFav, 190, 160,kBorderNone,kBorderBottom);
+    CMVisibleRect::setPositionAdapted(m_pFav, 900, 480,kBorderRight,kBorderTop);
 //    CMVisibleRect::setPositionAdapted(m_pEmail, 320, 160,kBorderNone,kBorderBottom);
     CMVisibleRect::setPositionAdapted(m_pHome, 900, 580,kBorderRight,kBorderTop);
 
-//    m_pFav->setTag(eUIButtonTagFav);
+    m_pFav->setTag(eUIButtonTagFav);
 //    m_pEmail->setTag(eUIButtonTagEmail);
     m_pHome->setTag(eUIButtonTagHome);
     
