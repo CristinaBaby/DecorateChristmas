@@ -1,0 +1,2 @@
+include ':DecorateChristmas'
+project(':DecorateChristmas').projectDir = new File(settingsDir, 'app')
